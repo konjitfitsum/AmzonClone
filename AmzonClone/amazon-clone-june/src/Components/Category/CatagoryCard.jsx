@@ -1,4 +1,5 @@
 import React from 'react'
+
 import classes from './Category.module.css'
 function CategoryCard({data}) {
   return (

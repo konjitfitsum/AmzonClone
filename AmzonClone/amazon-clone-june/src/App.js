@@ -1,13 +1,15 @@
 import React from 'react'
 import Header from './Components/Header/Header'
 import Carousel from './Components/Carousel/Carousel'
-import Catagory from './Components/Catagory/Category'
+import Catagory from './Components/Category/Category'
+import Product from './Components/Product/Product'
 function App() {
   return (
     <div>
       <Header/>
       <Carousel/>
       <Catagory/>
+      <Product/>
     </div>
   )
 }
