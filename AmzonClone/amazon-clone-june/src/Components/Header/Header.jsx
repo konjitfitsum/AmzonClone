@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import classes from './Header.module.css'
 import { SlLocationPin } from 'react-icons/sl'
 import {BsSearch} from "react-icons/bs"
 import { BiCart } from "react-icons/bi"
 import LowerHeader from './LowerHeader'
 import { Link } from 'react-router-dom'
+import { DataContext } from '../DataProvider/DataProvider'
 
 
 const Header = ()=>{
+    const [{basket}, dispatch] = useContext(DataContext)
+    console.log(basket);
     return(
         <>
         <section>
@@ -53,7 +56,7 @@ const Header = ()=>{
                     </Link>
                     <Link to="/cart" className={classes.cart}>
                         <BiCart size={35} />
-                        <span>0</span>
+                        <span>{basket.length}</span>
                     </Link>
                 </div>
             </div>
@@ -65,71 +68,3 @@ const Header = ()=>{
 export default Header;
 
 
-// const Header = () => {
-//     return (
-//       <>
-//         <section>
-//           <div className={classes.header_container}>
-//             {/* Logo Section */}
-//             <div className={classes.logo_container}>
-//               <Link to="/">
-//                 <img
-//                   src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
-//                   alt="Amazon logo"
-//                 />
-//               </Link>
-//               <div className={classes.delivery}>
-//                 <span>
-//                   <SlLocationPin />
-//                 </span>
-//                 <div>
-//                   <p>Deliver to</p>
-//                   <span>USA</span>
-//                 </div>
-//               </div>
-//             </div>
-//             {/* Search Section */}
-//             <div className={classes.search}>
-//               <select name="categories" id="categories">
-//                 <option value="all">All</option>
-//               </select>
-//               <input type="text" placeholder="Search..." />
-//               <BsSearch size={25} />
-//             </div>
-//             {/* Other Sections */}
-//             <div className={classes.order_container}>
-//               {/* Language Selector */}
-//               <Link to="#" className={classes.language}>
-//                 <img
-//                   src="https://pngimg.com/uploads/flags/flags_PNG14655.png"
-//                   alt="US flag"
-//                 />
-//                 <select name="language" id="language">
-//                   <option value="en">EN</option>
-//                 </select>
-//               </Link>
-//               {/* Account Section */}
-//               <Link to="#">
-//                 <p>Sign In</p>
-//                 <span>Account & Lists</span>
-//               </Link>
-//               {/* Orders Section */}
-//               <Link to ="/orders">
-//                 <p>Returns</p>
-//                 <span>& Orders</span>
-//               </Link>
-//               {/* Cart Section */}
-//               <Link to="/cart" className={classes.cart}>
-//                 <BiCart size={35} />
-//                 <span>0</span>
-//               </Link>
-//             </div>
-//           </div>
-//         </section>
-//         {/* Lower Header Section */}
-//         <LowerHeader />
-//       </>
-//     );
-//   };
-  
-//   export default Header;
