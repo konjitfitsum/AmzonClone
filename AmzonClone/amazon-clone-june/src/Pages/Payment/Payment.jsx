@@ -3,7 +3,7 @@ import LayOut from '../../Components/LayOut/LayOut'
 function Payment() {
   return (
     <LayOut>
-            <div>
+        <div>
         Payment
     </div>
     </LayOut>
