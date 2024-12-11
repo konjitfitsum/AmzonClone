@@ -10,21 +10,21 @@ const stripe = require("stripe")(
 );
 
 const app = express()
-app.use(cors({origin:true}))
-app.use(express.json())
+app.use(cors({origin:true}));
+app.use(express.json());
 
 app.get("/", (req,res)=>{
     res.status(200).json({
         message:"Success !",
     })
 })
-app.post("/payment/create",async(req,res)=>{
-    const total = req.query.total
+app.post("/payment/create",async (req, res)=>{
+    const total = parseInt(req.query.total);
 
     if(total >0){
         const paymentIntent =await stripe.paymentIntents.create({
             amount:total,
-            currency:"GBP"
+            currency:"Usd",
         })
         console.log(paymentIntent);
         res.status(201).json({
@@ -37,5 +37,5 @@ app.post("/payment/create",async(req,res)=>{
     }
 })
 
-exports.api = onRequest(app)
+exports.api = onRequest(app);
 
